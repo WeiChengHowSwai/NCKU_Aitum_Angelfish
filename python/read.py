@@ -1,6 +1,5 @@
 from serial import Serial, EIGHTBITS, PARITY_NONE, STOPBITS_ONE
 from time import sleep
-import time
 import sys
 import cv2
 import matplotlib.pyplot as plt
@@ -12,6 +11,7 @@ import tensorflow as tf
 from keras.models import Model
 from sklearn.metrics.pairwise import cosine_similarity
 from model_hercules import Center_mFCN3_relu_max2_WID_fz1_2
+import time
 COM_PORT = 'COM3'
 #COM_PORT = '/dev/serial/by-id/usb-Digilent_Digilent_USB_Device_251642542476-if00-port0'
 #BAUD_RATES = 115200
@@ -99,19 +99,20 @@ while True:
 				vec0 = vec0[0][0][0].tolist()
 
 				#recognition
-				best_score = -100
+				best_score = 0.5
 				best_name = 'nobody'
 				for key, value in cha_arr.items():
 					vec1 = value
 					score = cosine_similarity([vec0], [vec1])
-					print(key + ' ' + str(score))
+					#print(key + ' ' + str(score))
 					if score > best_score:
 						best_score = score
 						best_name = key
-
+				#print("inferencce time:"+str(end-start)+"\n")
 				print('\n')
 				print('+------------------------------------------------->')
 				print('|   Hi ' + best_name + ', confidence is ' + str(best_score))
+				
 				print('+------------------------------------------------->')
 			else:
 				print("\n--------------------No face-----------------------\n")
