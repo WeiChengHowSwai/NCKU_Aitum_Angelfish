@@ -4,6 +4,11 @@
 
 ## Introduction
 Our goal is to implements light face detection CNN model on ARC IoTdk board, edge devices such as ARC IoTdk board has advantages like low power comsumption and reasonable price are very suitable for preprocessing or wake-up device of the back-end system(in this case, we use face recognition CNN model as our backend system).
+
+## Demo Video
+
+[LINK](https://v.youku.com/v_show/id_XNDc4Mjg3OTk2MA==.html)
+
 ## System architecture
 ![system](./img/system.jpg)
 ## Required Hardware
